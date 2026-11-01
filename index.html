@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Designing a Parking Lot: An Object-Oriented Design Interview Walkthrough</title></head><body><h1>Designing a Parking Lot: An Object-Oriented Design Interview Walkthrough</h1>
+<p>"Design a parking lot" is the classic object-oriented design question. There is no single right answer; the interviewer watches how you clarify, model, and extend.</p>
+<h2>Clarify first</h2>
+<p>Ask about vehicle types (motorcycle, car, bus), spot sizes, multiple floors, payment, and whether you need entry/exit gates. Write the assumptions down.</p>
+<h2>Core classes</h2>
+<ul>
+<li><code>ParkingLot</code> holds floors and the entry/exit logic.</li>
+<li><code>Floor</code> holds spots and can find a free spot for a vehicle size.</li>
+<li><code>Spot</code> has a size and an optional current vehicle.</li>
+<li><code>Vehicle</code> with subclasses or a size enum.</li>
+<li><code>Ticket</code> records spot, vehicle, and entry time.</li>
+</ul>
+<h2>Key methods</h2>
+<p><code>park(vehicle) -&gt; Ticket</code>, <code>leave(ticket) -&gt; fee</code>, and <code>available_spots(size)</code>. Keep a free-spot set per size per floor so lookup is O(1) instead of scanning.</p>
+<h2>Extensions interviewers ask for</h2>
+<p>Pricing strategies (use a strategy interface), reservations, a display board showing free spots (observer pattern), and concurrency when two cars grab the same spot (lock per spot or atomic compare-and-set).</p>
+<h2>Common mistakes</h2>
+<p>Jumping into code before agreeing on requirements, and putting all logic in one giant class. Keep responsibilities small. More interview prep at <a href="https://www.linkjob.ai/">linkjob.ai</a>.</p>
+<p><em>Disclosure: I work on Linkjob AI.</em></p></body></html>
